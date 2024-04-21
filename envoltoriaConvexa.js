@@ -49,6 +49,6 @@ function desenharComClick(){
         let x = event.clientX - this.offsetLeft
         let y = event.clientY - this.offsetTop
         y = MAX_Y - y
-        desenharPonto(x-361, y+387)
+        desenharPonto(x-370, y+320)
     })
 }
