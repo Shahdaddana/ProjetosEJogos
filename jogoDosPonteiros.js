@@ -38,6 +38,7 @@ function desenharOverlay() {
 
                 // Adiciona um evento de clique para girar os ponteiros
                 ponteiro.addEventListener('click', clicarPonteiro)
+                ponteiro.addEventListener('touchstart', tocarPonteiro)
             }
 
             // Adiciona o ponteiro à linha
@@ -65,3 +66,7 @@ function clicarPonteiro(event) {
     ponteiro.dataset.rotation = rotation
 }
 
+function tocarPonteiro(event) {
+    event.preventDefault()
+    clicarPonteiro(event)
+}
