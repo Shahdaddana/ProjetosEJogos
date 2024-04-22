@@ -38,13 +38,10 @@ function desenharOverlay() {
 
                 // Adiciona um evento de clique para girar os ponteiros
                 ponteiro.addEventListener('click', clicarPonteiro)
-                ponteiro.addEventListener('touchend', clicarPonteiro)
             }
-
             // Adiciona o ponteiro à linha
             row.appendChild(ponteiro)
         }
-
         // Adiciona a linha ao overlay
         overlay.appendChild(row)
     }
@@ -58,8 +55,7 @@ function clicarPonteiro(event) {
     // Se a rotação atingir 0 graus, remove o evento de clique e troca a imagem
     if (rotation === (0 || 360)) {
         ponteiro.removeEventListener('click', clicarPonteiro)
-        const imagemURL = 'images/ponteiroCinza.png'
-        ponteiro.style.backgroundImage = `url("${imagemURL}")`
+        ponteiro.style.backgroundImage = 'url("images/ponteiroCinza.png")';
     }
 
     ponteiro.style.transform = `rotate(${rotation}deg)`
