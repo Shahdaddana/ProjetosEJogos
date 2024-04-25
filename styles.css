@@ -47,3 +47,27 @@
     border: none;
     cursor: pointer;
 }
+#dev {
+    max-width: 100px;
+    margin: 50px auto;
+    padding: 10px;
+    text-align: center;
+    background-color: rgb(227, 227, 227);
+}
+
+.copyright {
+    background-color: #000000;
+    color: #fff;
+    padding: 10px;
+    text-align: center;
+}
+
+.iconeRedesSociais li {
+    display: inline-block;
+    margin-right: 10px;
+    font-size: 30px;
+}
+
+.iconeRedesSociais{
+    font-size: 30px;
+}
