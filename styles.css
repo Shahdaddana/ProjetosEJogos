@@ -62,12 +62,8 @@
     text-align: center;
 }
 
-.iconeRedesSociais li {
-    display: inline-block;
-    margin-right: 10px;
-    font-size: 30px;
-}
-
-.iconeRedesSociais{
-    font-size: 30px;
+.iconeArbitrario{
+    font-size: 33px;
+    position: relative;
+    top: 2px;
 }
