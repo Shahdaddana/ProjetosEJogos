@@ -14,7 +14,8 @@ const loc_B = 1
 const loc_C = 2
 const loc_D = 3
 const LOCAIS = [loc_A, loc_B, loc_C, loc_D]
-const DIRECOES = ['Cima', 'Baixo', 'Esquerda', 'Direita']
+//               'Cima', 'Direita', 'Baixo', 'Esquerda']
+const DIRECOES = [ 0,       90,      180,       270]
 
 // objetoOverlay é a DIV que será criada o jogo
 // incluirEventos é se os eventos de mouse serão criados
@@ -86,19 +87,14 @@ function atualizarPonteiroVisual(ponteiroId, direcao, idOverlay) {
     const ponteiro = document.getElementById(idOverlay+'_'+ponteiroId)
 
     // Atualiza a imagem e a rotação do ponteiro com base na direção
-    if (direcao === 'Cima') {
+    ponteiro.style.transform = 'rotate('+direcao+'deg)'
+    if (direcao === 0){
         ponteiro.style.backgroundImage = 'url("images/ponteiroCinza.png")'
-        ponteiro.style.transform = 'rotate(0deg)'
-    } else if (direcao === 'Baixo') {
-        ponteiro.style.backgroundImage = 'url("images/ponteiroColorido.png")'
-        ponteiro.style.transform = 'rotate(180deg)'
-    } else if (direcao === 'Esquerda') {
-        ponteiro.style.backgroundImage = 'url("images/ponteiroColorido.png")'
-        ponteiro.style.transform = 'rotate(270deg)'
-    } else if (direcao === 'Direita') {
-        ponteiro.style.backgroundImage = 'url("images/ponteiroColorido.png")'
-        ponteiro.style.transform = 'rotate(90deg)'
     }
+    if (direcao === (90 || 180 || 270)){
+        ponteiro.style.backgroundImage = 'url("images/ponteiroColorido.png")'
+    }
+    
 }
 
 function executarIA(idOverlay) {
@@ -108,6 +104,7 @@ function executarIA(idOverlay) {
     let index = 0
     const maxIterations = 400
     const delay = 100
+    let elementoContador = document.getElementById('contador')
 
     function iterar() {
         if (index < maxIterations && agente.alive) {
@@ -118,7 +115,7 @@ function executarIA(idOverlay) {
             ambiente.step()
             setTimeout(iterar, delay)
             index++
-            console.log(ambiente.status)
+            elementoContador.textContent = agente.performance
         }
     }
     iterar()
@@ -288,7 +285,6 @@ class AmbienteSimpleJogoDosPonteiros extends Environment {
             this.obterDirecaoAleatoria(),
             this.obterDirecaoAleatoria(),
         ]
-        
     }
     
     obterDirecaoAleatoria() {
@@ -306,8 +302,12 @@ class AmbienteSimpleJogoDosPonteiros extends Environment {
     }
 
     executeAction(agent, action) {
-        if (this.status.every(status => status === 'Cima')){
+        if (this.status.every(status => status === 0)){
             agent.alive = false
+            return
+        }
+        if ((action == 'GirarH' || action == 'GirarAntiH') && 
+        (this.status[agent.location] === 0)){
             return
         }
         if (action === 'Esquerda') {
@@ -345,26 +345,15 @@ class AmbienteSimpleJogoDosPonteiros extends Environment {
         } 
         
         else if (action == 'GirarH') {
-            if (this.status[agent.location] == 'Cima'){
-                this.status[agent.location] = 'Cima'
-            } else if (this.status[agent.location] == 'Direita'){
-                this.status[agent.location] = 'Baixo'
-            } else if (this.status[agent.location] == 'Baixo'){
-                this.status[agent.location] = 'Esquerda'
-            } else if (this.status[agent.location] == 'Esquerda'){
-                this.status[agent.location] = 'Cima'
-            }
-        } else if (action == 'GirarAntiH') {
-            if (this.status[agent.location] == 'Cima'){
-                this.status[agent.location] = 'Cima'
-            } else if (this.status[agent.location] == 'Esquerda'){
-                this.status[agent.location] = 'Baixo'
-            } else if (this.status[agent.location] == 'Baixo'){
-                this.status[agent.location] = 'Direita'
-            } else if (this.status[agent.location] === 'Direita'){
-                this.status[agent.location] = 'Cima'
+            this.status[agent.location] += 90
+            if (this.status[agent.location] === 360){
+                this.status[agent.location] = 0
             }
         } 
+        
+        else if (action == 'GirarAntiH') {
+            this.status[agent.location] -= 90
+        }
     }
     
     defaultLocation(thing) {

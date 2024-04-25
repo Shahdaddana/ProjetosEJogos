@@ -62,8 +62,22 @@
     text-align: center;
 }
 
-.iconeArbitrario{
+.iconeArbitrario {
     font-size: 33px;
     position: relative;
     top: 3px;
+}
+
+.contador {	
+    color: #ff2900;
+    position: relative;
+    text-align: center;
+    font-size: 35px;
+    top: -15px;
+    left: 10px;
+}
+
+.contadorBackground{
+    background-image: url(images/img_bg_1.jpg);
+    background-size: cover;
 }
