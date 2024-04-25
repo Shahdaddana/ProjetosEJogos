@@ -9,13 +9,12 @@ const BOTOES_ROTACAO = {
 }
 
 // Inicialização objetos da IA //
+const loc_A = 0
+const loc_B = 1
+const loc_C = 2
+const loc_D = 3
+const LOCAIS = [loc_A, loc_B, loc_C, loc_D]
 const DIRECOES = ['Cima', 'Baixo', 'Esquerda', 'Direita']
-const LOCAIS = {
-    A: 0,
-    B: 1,
-    C: 2,
-    D: 3
-}
 
 // objetoOverlay é a DIV que será criada o jogo
 // incluirEventos é se os eventos de mouse serão criados
@@ -40,7 +39,7 @@ function desenharOverlay(objetoOverlay, incluirEventos) {
             ponteiro.style.width = `${TAMANHO_PONTEIRO}px`
             ponteiro.style.height = `${TAMANHO_PONTEIRO}px`
             ponteiro.style.backgroundSize = 'contain'
-            ponteiro.id = PONTEIROS[ponteiroId++]
+            ponteiro.id = objetoOverlay+'_'+PONTEIROS[ponteiroId++]
 
             // Aleatoriza a posição inicial do ponteiro
             const randomRotation = ROTACOES[Math.floor(Math.random() * ROTACOES.length)]
@@ -83,19 +82,47 @@ function clicarPonteiro(event) {
     ponteiro.dataset.rotation = rotation
 }
 
-function executarIA3(){
-    const ponteiro = document.getElementById(0)
-    if (ponteiro) {
-        ponteiro.style.transform = `rotate(180deg)`
-        ponteiro.dataset.rotation = 180
+function atualizarPonteiroVisual(ponteiroId, direcao, idOverlay) {
+    const ponteiro = document.getElementById(idOverlay+'_'+ponteiroId)
+
+    // Atualiza a imagem e a rotação do ponteiro com base na direção
+    if (direcao === 'Cima') {
         ponteiro.style.backgroundImage = 'url("images/ponteiroCinza.png")'
-        console.log(ponteiro)
-    } else {
-        console.log('Ponteiro não encontrado com o ID especificado.')
+        ponteiro.style.transform = 'rotate(0deg)'
+    } else if (direcao === 'Baixo') {
+        ponteiro.style.backgroundImage = 'url("images/ponteiroColorido.png")'
+        ponteiro.style.transform = 'rotate(180deg)'
+    } else if (direcao === 'Esquerda') {
+        ponteiro.style.backgroundImage = 'url("images/ponteiroColorido.png")'
+        ponteiro.style.transform = 'rotate(270deg)'
+    } else if (direcao === 'Direita') {
+        ponteiro.style.backgroundImage = 'url("images/ponteiroColorido.png")'
+        ponteiro.style.transform = 'rotate(90deg)'
     }
 }
 
+function executarIA(idOverlay) {
+    const agente = new AgenteAleatorioJogoPonteiros()
+    const ambiente = new AmbienteSimpleJogoDosPonteiros()
+    ambiente.addThing(agente)
+    let index = 0
+    const maxIterations = 400
+    const delay = 100
 
+    function iterar() {
+        if (index < maxIterations && agente.alive) {
+            for (const [location, direction] of Object.entries(ambiente.status)) {
+                atualizarPonteiroVisual(location, direction, idOverlay)
+            }
+
+            ambiente.step()
+            setTimeout(iterar, delay)
+            index++
+            console.log(ambiente.status)
+        }
+    }
+    iterar()
+}
 
 ////// Inicio da IA //////
 class Thing {
