@@ -11,7 +11,7 @@
 		<!---------------------------------------------->
 
 		<!------------------- ESTILOS ------------------>
-		<!-- Envoltória Convexa -->
+		<!-- Jogo dos ponteiros -->
 		<script src="jogoDosPonteiros.js"></script>
 		<!-- Animate.css -->
 		<link rel="stylesheet" href="css/animate.css">
@@ -41,45 +41,82 @@
                 <div class="row animate-box">
                     <div class="col-md-8 col-md-offset-2 text-center gtco-heading">
                         <h2>Jogo dos Ponteiros</h2>
-                        <p>descricao</p>
+                        <p>Um jogo simples em plano cartesiano, feito para implementar IAs</p>
                     </div>
                 </div>
                 <div class="row animate-box">
                     <div class="gtco-tabs">
                         <!-- Tabs -->
                         <ul class="gtco-tab-nav">
-                            <li class="active"><a href="#" data-tab="1"><span class="icon visible-xs"><i class="icon-command"></i></span><span class="hidden-xs">Simples</span></a></li>
+                            <li class="active"><a href="#" data-tab="1"><span class="icon visible-xs"><i class="icon-command"></i></span><span class="hidden-xs">Manual</span></a></li>
+						    <li><a href="#" data-tab="2"><span class="icon visible-xs"><i class="icon-bar-graph"></i></span><span class="hidden-xs">Aleatório</span></a></li>
                         </ul>
                         <!-- Conteúdo das Tabs -->
                         <div class="gtco-tab-content-wrap">
+
+                            <!-- Manual -->
                             <div class="gtco-tab-content tab-content active" data-tab-content="1">
                                 <div class="col-md-6">
                                     <div class="gtco-video gtco-bg">
                                         <div id="overlay">
                                             <script>
-                                                desenharOverlay()
+                                                desenharOverlay('overlay', true)
                                             </script>
                                         </div>
-                                        <!-- <button class="play" id="botaoPlay"></button> -->
                                     </div>
                                 </div>
                                 <div class="col-md-6">
-                                    <h2>Simples</h2>
-                                    <p>Paragraph placeat quis fugiat provident veritatis quia iure a debitis adipisci 
-                                        dignissimos consectetur magni quas eius nobis reprehenderit soluta eligendi
-                                        quo reiciendis fugit? Veritatis tenetur odio delectus quibusdam officiis est.</p>
+                                    <h2>Manual
+                                    </h2>
+                                    <p>O objetivo do jogo é fazer todos os ponteiros apontarem para cima. Quando a fase se
+                                        inicia, eles irão apontar aleatoriamente entre Norte, Sul, Leste e Oeste. Você
+                                        pode clicar com o botão esquerdo do mouse para girar no sentido horário, ou o botão
+                                        do meio para girar no sentido anti horário
+                                    </p>
                                     <div class="row">
                                         <div class="col-md-6">
-                                            <h2 class="uppercase">Keep it simple</h2>
-                                            <p>Ullam dolorum iure dolore dicta fuga ipsa velit veritatis</p>
+                                            <h2 class="uppercase">Simples!</h2>
+                                            <p>Faça todos os ponteiros apontarem para o Norte</p>
                                         </div>
                                         <div class="col-md-6">
-                                            <h2 class="uppercase">Less is more</h2>
-                                            <p>Ullam dolorum iure dolore dicta fuga ipsa velit veritatis</p>
+                                            <h2 class="uppercase">Gire!</h2>
+                                            <p>Faça os ponteiros girarem com o botão do mouse</p>
                                         </div>
                                     </div>
                                 </div>
                             </div>
+
+                            <!-- Aleatório -->
+                            <div class="gtco-tab-content tab-content" data-tab-content="2">
+                                <div class="col-md-6 col-md-push-6">
+                                    <div class="gtco-video gtco-bg" >
+                                        <div id="overlay2">
+                                            <script>
+                                                desenharOverlay('overlay2', false)
+                                            </script>
+                                        </div>
+                                        <button class="play" id="botaoPlay" onclick="executarIA3()"></button>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-md-pull-6">
+                                    <h2>Aleatório</h2>
+                                    <p>Uma IA tentará girar os ponteiros de forma aleatória e navegar pelo tabuleiro. A cada
+                                        rodada ela poderá apenas fazer uma ação, consumindo um ponto
+                                    </p>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <h2 class="uppercase">Navegação</h2>
+                                            <p>Ir para esquerda, direita, cima ou baixo</p>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <h2 class="uppercase">Giro</h2>
+                                            <p>Girar no sentido horário ou anti horário</p>
+                                        </div>
+                                    </div>
+    
+                                </div>
+                            </div>
+
                         </div>
                     </div>
                 </div>

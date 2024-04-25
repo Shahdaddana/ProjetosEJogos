@@ -1,9 +1,10 @@
-const loc_A = 0
-const loc_B = 1
-const loc_C = 2
-const loc_D = 3
 const DIRECOES = ['Cima', 'Baixo', 'Esquerda', 'Direita']
-const LOCAIS = [loc_A, loc_B, loc_C, loc_D]
+const LOCAIS = {
+    A: 0,
+    B: 1,
+    C: 2,
+    D: 3
+}
 
 
 class Thing {
@@ -187,36 +188,40 @@ class AmbienteSimpleJogoDosPonteiros extends Environment {
     }
 
     executeAction(agent, action) {
+        if (this.status.every(status => status === 'Cima')){
+            agent.alive = false
+            return
+        }
         if (action === 'Esquerda') {
-            if (agent.location === loc_B) {
-                agent.location = loc_A
+            if (agent.location === LOCAIS[1]) {
+                agent.location = LOCAIS[0]
                 agent.performance -= 1
-            } else if (agent.location === loc_D) {
-                agent.location = loc_C
+            } else if (agent.location === LOCAIS[3]) {
+                agent.location = LOCAIS[2]
                 agent.performance -= 1
             }
         } else if (action === 'Direita') {
-            if (agent.location === loc_A) {
-                agent.location = loc_B
+            if (agent.location === LOCAIS[0]) {
+                agent.location = LOCAIS[1]
                 agent.performance -= 1
-            } else if (agent.location === loc_C) {
-                agent.location = loc_D
+            } else if (agent.location === LOCAIS[2]) {
+                agent.location = LOCAIS[3]
                 agent.performance -= 1
             }
         } else if (action === 'Cima') {
-            if (agent.location === loc_A) {
-                agent.location = loc_C
+            if (agent.location === LOCAIS[0]) {
+                agent.location = LOCAIS[2]
                 agent.performance -= 1
-            } else if (agent.location === loc_B) {
-                agent.location = loc_D
+            } else if (agent.location === LOCAIS[1]) {
+                agent.location = LOCAIS[3]
                 agent.performance -= 1
             }
         } else if (action === 'Baixo') {
-            if (agent.location === loc_C) {
-                agent.location = loc_A
+            if (agent.location === LOCAIS[2]) {
+                agent.location = LOCAIS[0]
                 agent.performance -= 1
-            } else if (agent.location === loc_D) {
-                agent.location = loc_B
+            } else if (agent.location === LOCAIS[3]) {
+                agent.location = LOCAIS[1]
                 agent.performance -= 1
             }
         } 
@@ -261,17 +266,11 @@ function AgenteAleatorioJogoPonteiros() {
     return new Agent(RandomAgentProgram(['Cima', 'Baixo', 'Esquerda', 'Direita', 'GirarH', 'GirarAntiH']))
 }
 
-/////////////////////////////////////////////////////
+const agente = new AgenteAleatorioJogoPonteiros()
 const ambiente = new AmbienteSimpleJogoDosPonteiros()
-const agente = AgenteAleatorioJogoPonteiros()
 ambiente.addThing(agente)
 
-
-for (let index = 0; index < 1000; index++) {
-    if (ambiente.status.every(status => status === 'Cima') ){
-        break
-    }
+for (let index = 0; index < 100; index++) {
     ambiente.step()
-    //console.log(ambiente.status)
+    console.log(ambiente.status)
 }
-console.log(agente.performance)
