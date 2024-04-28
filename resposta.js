@@ -1,14 +1,29 @@
 import { launch } from 'puppeteer'
-const websiteUrl = 'https://www.gisa.energisa.com.br'
+const website = 'https://www.gisa.energisa.com.br'
 
 
-(async () =>{
-    const browser = await launch()
+async function explorar(url){
+    const browser = await launch({
+        headless:  false,
+        defaultViewport: false,
+    })
     const page = await browser.newPage()
-    await page.goto(websiteUrl)
-    await page.screenshot({ path: 'example.png'})
-    await browser.close()
-})()
+    await page.goto(url)
+    
+
+    await page.evaluate(() => {
+        console.log('ola')
+        
+        
+    })
+
+    await browser.close();
+}
+
+
+explorar(website)
+    .then(() => console.log('Sucesso'))
+    .catch(err => console.error('Erro:', err))
 
 
 
