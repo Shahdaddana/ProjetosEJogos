@@ -1,3 +1,24 @@
+import { launch } from 'puppeteer'
+const websiteUrl = 'https://www.gisa.energisa.com.br'
+
+
+(async () =>{
+    const browser = await launch()
+    const page = await browser.newPage()
+    await page.goto(websiteUrl)
+    await page.screenshot({ path: 'example.png'})
+    await browser.close()
+})()
+
+
+
+
+
+
+
+
+
+
 /*
 const websiteUrl = 'https://www.gisa.energisa.com.br'
 import { launch } from 'puppeteer'
@@ -32,7 +53,7 @@ getContentFromWebsite(websiteUrl)
     .catch(error => {
         console.error('Erro:', error)
     })
-*/
+
 
 
 
@@ -112,4 +133,4 @@ getContentFromWebsite(websiteUrl)
     
     // Chamar a função para automatizar o processo
     automatizarGisa();
-    
+*/
