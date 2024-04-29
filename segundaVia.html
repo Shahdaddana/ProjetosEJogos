@@ -1,0 +1,102 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+    <!------------------- HEADER ------------------->
+	<title>Jogos e Projetos</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="description" content="Free HTML5 Website Template by FreeHTML5.co" />
+	<link rel="stylesheet" href="styles.css">
+	<link href='https://fonts.googleapis.com/css?family=Raleway:400,300,600,400italic,700' rel='stylesheet' type='text/css'>
+	<!---------------------------------------------->
+	
+    <!-- Segunda Via.js -->
+	<script src="segundaVia.js"></script>
+	<!-- Animate.css -->
+	<link rel="stylesheet" href="css/animate.css">
+	<!-- Icomoon Icon Fonts-->
+	<link rel="stylesheet" href="css/icomoon.css">
+	<!-- Bootstrap  -->
+	<link rel="stylesheet" href="css/bootstrap.css">
+	<!-- Magnific Popup -->
+	<link rel="stylesheet" href="css/magnific-popup.css">
+	<!-- Owl Carousel  -->
+	<link rel="stylesheet" href="css/owl.carousel.min.css">
+	<link rel="stylesheet" href="css/owl.theme.default.min.css">
+	<!-- Theme style  -->
+	<link rel="stylesheet" href="css/style.css">
+	<!-- Modernizr JS -->
+	<script src="js/modernizr-2.6.2.min.js"></script>
+	</head>
+<body>
+		
+	<div id="page">
+        <div id="gtco-subscribe">
+            <div class="gtco-container">
+                <div class="row animate-box">
+                    <div class="col-md-8 col-md-offset-2 text-center gtco-heading">
+                        <h2>Segunda Via - Energisa</h2>
+                        <p>Receba o código QR copia e cola para pagar</p>
+                    </div>
+                </div>
+                <div class="row animate-box">
+                    <div class="col-md-12">
+                        <form class="form-inline">
+                            <div class="col-md-4 col-sm-4">
+                                <div class="form-group">
+                                    <label for="name" class="sr-only">Matrícula</label>
+                                    <input type="text" class="form-control" id="matricula" placeholder="Número de matrícula">
+                                </div>
+                            </div>
+                            <div class="col-md-4 col-sm-4 text-right">
+                                <button onclick="teste('olabb')" id="btnReceber" type="submit" class="btn btn-default btn-block">Receber</button>
+                            </div>
+                            <div class="col-md-4 col-sm-4">
+                                <div class="form-group">
+                                    <label for="name" class="sr-only"></label>
+                                    <input type="text" class="form-control" id="codigo">
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+	</div>
+
+    <script src="segundaVia.js"></script>
+    <script>
+    async function handleReceberClick() {
+        try {
+            const matricula = document.getElementById('matricula').value
+            const resultado = await receberCodigoPix(matricula)
+            document.getElementById('codigo').value = resultado
+        } catch (error) {
+            console.error('Erro ao receber o código PIX:', error)
+        }
+    }
+
+    //document.getElementById('btnReceber').addEventListener('click', handleReceberClick)
+    </script>
+
+	<!-- jQuery -->
+	<script src="js/jquery.min.js"></script>
+	<!-- jQuery Easing -->
+	<script src="js/jquery.easing.1.3.js"></script>
+	<!-- Bootstrap -->
+	<script src="js/bootstrap.min.js"></script>
+	<!-- Waypoints -->
+	<script src="js/jquery.waypoints.min.js"></script>
+	<!-- Carousel -->
+	<script src="js/owl.carousel.min.js"></script>
+	<!-- countTo -->
+	<script src="js/jquery.countTo.js"></script>
+	<!-- Magnific Popup -->
+	<script src="js/jquery.magnific-popup.min.js"></script>
+	<script src="js/magnific-popup-options.js"></script>
+	<!-- Main -->
+	<script src="js/main.js"></script>
+
+</body>
+</html>
+
