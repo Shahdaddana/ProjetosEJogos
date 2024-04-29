@@ -11,7 +11,7 @@
 	<!---------------------------------------------->
 	
     <!-- Segunda Via.js -->
-	<script src="segundaVia.js"></script>
+	<script src="segundaVia.js" type="module"></script>
 	<!-- Animate.css -->
 	<link rel="stylesheet" href="css/animate.css">
 	<!-- Icomoon Icon Fonts-->
@@ -33,51 +33,36 @@
 	<div id="page">
         <div id="gtco-subscribe">
             <div class="gtco-container">
-                <div class="row animate-box">
+                <div class="row">
                     <div class="col-md-8 col-md-offset-2 text-center gtco-heading">
                         <h2>Segunda Via - Energisa</h2>
                         <p>Receba o código QR copia e cola para pagar</p>
                     </div>
                 </div>
-                <div class="row animate-box">
+                <div class="row">
                     <div class="col-md-12">
-                        <form class="form-inline">
-                            <div class="col-md-4 col-sm-4">
-                                <div class="form-group">
-                                    <label for="name" class="sr-only">Matrícula</label>
-                                    <input type="text" class="form-control" id="matricula" placeholder="Número de matrícula">
-                                </div>
+                        <div class="col-md-4 col-sm-4">
+                            <div class="form-group">
+                                <label for="name" class="sr-only">Matrícula</label>
+                                <input type="text" class="form-control" id="matricula" placeholder="Número de matrícula">
                             </div>
-                            <div class="col-md-4 col-sm-4 text-right">
-                                <button onclick="teste('olabb')" id="btnReceber" type="submit" class="btn btn-default btn-block">Receber</button>
+                        </div>
+                        <div class="col-md-4 col-sm-4 text-right">
+                            <button onclick="teste()" id="btnReceber" class="btn btn-default btn-block">Receber</button>
+                        </div>
+                        <div class="col-md-4 col-sm-4">
+                            <div class="form-group">
+                                <label for="name" class="sr-only"></label>
+                                <input type="text" class="form-control" id="codigo">
                             </div>
-                            <div class="col-md-4 col-sm-4">
-                                <div class="form-group">
-                                    <label for="name" class="sr-only"></label>
-                                    <input type="text" class="form-control" id="codigo">
-                                </div>
-                            </div>
-                        </form>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
 	</div>
 
-    <script src="segundaVia.js"></script>
-    <script>
-    async function handleReceberClick() {
-        try {
-            const matricula = document.getElementById('matricula').value
-            const resultado = await receberCodigoPix(matricula)
-            document.getElementById('codigo').value = resultado
-        } catch (error) {
-            console.error('Erro ao receber o código PIX:', error)
-        }
-    }
-
-    //document.getElementById('btnReceber').addEventListener('click', handleReceberClick)
-    </script>
+    
 
 	<!-- jQuery -->
 	<script src="js/jquery.min.js"></script>

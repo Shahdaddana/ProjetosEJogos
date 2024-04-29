@@ -2,8 +2,9 @@ import { launch } from 'puppeteer'
 const website = 'https://www.gisa.energisa.com.br'
 const website2 = 'https://energisa.chat.blip.ai/?appKey=ZW5lcmdpc2FzZXJnaXBlZXNlcHJkOmM4MTQxYmQyLWQ0YzMtNGFiNi1hNjBkLTdiZWUyODAyMmZkNQ=='
 
-async function teste(numero){
-    document.getElementById('btnReceber').value = numero
+function teste(){
+    
+    document.getElementById('codigo').value = 1
 }
 
 async function esperar(time) {
@@ -43,7 +44,7 @@ async function receberCodigoPix(matricula){
     const browser = await launch({
         headless:  false,
         defaultViewport: false,
-        devtools: true
+        devtools: false
     })
     const page = await browser.newPage()
     await page.goto(website2)
@@ -70,7 +71,7 @@ async function receberCodigoPix(matricula){
     await page.keyboard.press('Enter')
 
     await esperar(5000)
-    await page.keyboard.type(matricula)
+    await page.keyboard.type(matricula)// 38142903
     await page.keyboard.press('Enter')
 
     await esperar(5000)
@@ -84,7 +85,9 @@ async function receberCodigoPix(matricula){
     const posicaoMaiorAntes = conteudoCortado.lastIndexOf(">", posicaoPix)
     const posicaoMenorDepois = conteudoCortado.indexOf("<", posicaoPix)
     const qrCode = conteudoCortado.substring(posicaoMaiorAntes + 1, posicaoMenorDepois)
-    //await browser.close()
+    await browser.close()
     return qrCode
 }
 
+ const codigo = await receberCodigoPix('38142903')
+ console.log(codigo)
