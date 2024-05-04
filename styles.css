@@ -81,3 +81,24 @@
     background-image: url(images/img_bg_1.jpg);
     background-size: cover;
 }
+
+.labelInput {
+    display: inline-block;
+    padding: 10px 30px;
+    font-size: 16px;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+    outline: none;
+    color: #fff;
+    background-color: #ff5c14;
+    border: none;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    transition: .5s;
+}
+
+.labelInput:hover{
+    background-color: #ff4d0073;
+}
+

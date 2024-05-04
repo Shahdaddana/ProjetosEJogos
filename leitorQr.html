@@ -1,0 +1,89 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+    <!------------------- HEADER ------------------->
+	<title>Jogos e Projetos</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="description" content="Free HTML5 Website Template by FreeHTML5.co" />
+	<link rel="stylesheet" href="styles.css">
+	<link href='https://fonts.googleapis.com/css?family=Raleway:400,300,600,400italic,700' rel='stylesheet' type='text/css'>
+	<!---------------------------------------------->
+	
+
+    
+	<!-- Animate.css -->
+	<link rel="stylesheet" href="css/animate.css">
+	<!-- Icomoon Icon Fonts-->
+	<link rel="stylesheet" href="css/icomoon.css">
+	<!-- Bootstrap  -->
+	<link rel="stylesheet" href="css/bootstrap.css">
+	<!-- Magnific Popup -->
+	<link rel="stylesheet" href="css/magnific-popup.css">
+	<!-- Owl Carousel  -->
+	<link rel="stylesheet" href="css/owl.carousel.min.css">
+	<link rel="stylesheet" href="css/owl.theme.default.min.css">
+	<!-- Theme style  -->
+	<link rel="stylesheet" href="css/style.css">
+	<!-- Modernizr JS -->
+	<script src="js/modernizr-2.6.2.min.js"></script>
+	</head>
+<body>
+		
+	<div id="page">
+        <div id="gtco-subscribe">
+            <div class="gtco-container">
+                <div class="row">
+                    <div class="col-md-8 col-md-offset-2 text-center gtco-heading">
+                        <h2>Leitor de código QR</h2>
+                        <p>Envie a imagem do código QR e receba seu conteúdo</p>
+                    </div>
+                </div>
+                <div style="text-align: center">
+                    <label for="imagemQr" class="labelInput">Enviar</label>
+                    <input type="file" id="imagemQr" accept="image/*" style="display: none;">
+                </div>
+                <div style="margin-top: 10px;"></div>
+                <div style="text-align: center";>
+                    <textarea id="texto" style="width: 300px; height: 100px;"></textarea>
+                </div>
+            </div>
+        </div>
+	</div>
+
+    
+
+    
+
+<!-- jQuery -->
+<script src="js/jquery.min.js"></script>
+<!-- jQuery Easing -->
+<script src="js/jquery.easing.1.3.js"></script>
+<!-- Bootstrap -->
+<script src="js/bootstrap.min.js"></script>
+<!-- Waypoints -->
+<script src="js/jquery.waypoints.min.js"></script>
+<!-- Carousel -->
+<script src="js/owl.carousel.min.js"></script>
+<!-- countTo -->
+<script src="js/jquery.countTo.js"></script>
+<!-- Magnific Popup -->
+<script src="js/jquery.magnific-popup.min.js"></script>
+<script src="js/magnific-popup-options.js"></script>
+<!-- Main -->
+<script src="js/main.js"></script>
+<!-- js QR -->
+<script src="https://cdn.jsdelivr.net/npm/jsqr@1.4.0/dist/jsQR.min.js"></script>
+
+<script src="leitorQr.js"></script> 
+<script>
+    document.getElementById('imagemQr').addEventListener('change', function(event) {
+        const arquivo = event.target.files[0]
+        const urlImagem = URL.createObjectURL(arquivo)
+        receberQR(urlImagem)
+    })
+</script>
+
+</body>
+</html>
+
