@@ -29,3 +29,19 @@ function lerFrases(destino) {
          caixaDeTexto.textContent = "Erro ao ler arquivo"
      })
 }
+
+async function getAuthSheets(){
+    const auth = new google.auth.GoogleAuth({
+        keyFile: "credentials.json",
+        scopes: "https://www.googleapis.com/auth/spreadsheets"
+    })
+    const client = await auth.getClient()
+    const googleSheets = google.sheets({
+        version: "v4",
+        auth: client
+    })
+    const spreadsheetId = "1Ig5zFv6Djkn8lTQrCiy6qql-kk9FWiOWgRsarNF3ggI"
+    return {
+        auth, client, googleSheets, spreadsheetId
+    }
+}
