@@ -24,11 +24,15 @@
       <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
       <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
       <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-      <!-- Navbar-->
+      <!-- Google API -->
+      <!-- <script type="module" src="https://cdn.jsdelivr.net/npm/googleapis@136.0.0/build/src/index.min.js"></script> -->
+      <!-- <script type="module" src="https://cdn.jsdelivr.net/npm/google-auth-library@9.9.0/build/src/index.min.js"></script> -->
+      <!-- <script type="module" src="https://cdn.jsdelivr.net/npm/google-spreadsheet@4.1.1/+esm"></script> -->
       <script src="classificador.js"></script>
       <script>
          carregarElemento('navbar.html','navbar-container')
          lerFrases('caixaDeTexto')
+         console.log(getAuthSheets())
       </script>
    </body>
 </html>

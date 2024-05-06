@@ -4,11 +4,6 @@
     color: #333;
   }
   
-.navbar-nav .nav-link {
-  font-size: 18px;
-  color: #333;
-}
-
 .dropdown-menu {
   background-color: #f8f9fa;
 }
@@ -26,6 +21,7 @@
 
 #navGeral {
   margin-bottom: 40px;
+  background-color: #ffffff;
 }
 
 .box {
@@ -54,16 +50,26 @@
 }
 
 .reject-button {
-  background-color: #c93a3a; /* cinza escuro */
-  color: #fff; /* branco */
+  background-color: #c93a3a;
+  color: #fff;
 }
 
 .accept-button {
-  background-color: #7dff56; /* laranja */
-  color: #fff; /* branco */
-  right: calc(10px + 120px); /* 120px é a largura do botão de rejeitar */
+  background-color: #68d148;
+  color: #fff; 
+  right: calc(10px + 120px);
 }
 
 .accept-button:hover, .reject-button:hover {
   opacity: 0.8;
+}
+
+.botaoNavbar {
+  color: #000000;
+  font-size: 25px;
+}
+
+.botaoNavbar:hover {
+  opacity: 0.6;
+  font-size: 26px;
 }

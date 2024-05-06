@@ -30,8 +30,10 @@ function lerFrases(destino) {
      })
 }
 
+/*
+
 async function getAuthSheets(){
-    const auth = new google.auth.GoogleAuth({
+    const auth = new GoogleAuth({
         keyFile: "credentials.json",
         scopes: "https://www.googleapis.com/auth/spreadsheets"
     })
@@ -41,7 +43,18 @@ async function getAuthSheets(){
         auth: client
     })
     const spreadsheetId = "1Ig5zFv6Djkn8lTQrCiy6qql-kk9FWiOWgRsarNF3ggI"
-    return {
-        auth, client, googleSheets, spreadsheetId
-    }
+    return { client }
 }
+
+async function getRows(){
+
+    const { googleSheets, auth, spreadsheetId } = await getAuthSheets()
+
+    const getRows = await googleSheets.spreadsheets.value({
+        auth,
+        spreadsheetId,
+        range: "pagina"
+    })
+}
+
+*/
