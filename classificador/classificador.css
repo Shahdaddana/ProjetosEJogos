@@ -1,0 +1,69 @@
+.navbar-brand {
+    font-size: 24px;
+    font-weight: bold;
+    color: #333;
+  }
+  
+.navbar-nav .nav-link {
+  font-size: 18px;
+  color: #333;
+}
+
+.dropdown-menu {
+  background-color: #f8f9fa;
+}
+
+.dropdown-item {
+  font-size: 16px;
+  color: #333;
+}
+
+.dropdown-item:hover,
+.dropdown-item:focus {
+  background-color: #ffa500;
+  color: #fff;
+}
+
+#navGeral {
+  margin-bottom: 40px;
+}
+
+.box {
+  width: 60vw;
+  height: 45vh;
+  position: relative;
+  background-color: #f0f0f0;
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
+}
+
+.boxText {
+  color: black;
+  font-size: 32px;
+}
+
+.accept-button, .reject-button {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.reject-button {
+  background-color: #c93a3a; /* cinza escuro */
+  color: #fff; /* branco */
+}
+
+.accept-button {
+  background-color: #7dff56; /* laranja */
+  color: #fff; /* branco */
+  right: calc(10px + 120px); /* 120px é a largura do botão de rejeitar */
+}
+
+.accept-button:hover, .reject-button:hover {
+  opacity: 0.8;
+}
