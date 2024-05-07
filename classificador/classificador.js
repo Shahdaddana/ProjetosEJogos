@@ -57,4 +57,41 @@ async function getRows(){
     })
 }
 
+
+
+
+const apiKey = "credentials.json"
+const spreadsheetId = '1Ig5zFv6Djkn8lTQrCiy6qql-kk9FWiOWgRsarNF3ggI'
+const range = 'pagina'
+
+function testar() {
+    gapi.load('client', initClient);
+}
+
+
+
+function initClient() {
+    gapi.client.init({
+        'apiKey': apiKey,
+        'discoveryDocs': ['https://sheets.googleapis.com/$discovery/rest?version=v4']
+    }).then(function() {
+        return gapi.client.sheets.spreadsheets.values.get({
+            spreadsheetId: spreadsheetId,
+            range: range,
+        })
+    }).then(function(response) {
+        const rangeData = response.result.values;
+        if (rangeData.length > 0) {
+            console.log('Dados obtidos:');
+            rangeData.forEach(row => {
+                console.log(`${row[0]}, ${row[1]}`)
+            })
+        } else {
+            console.log('Nenhum dado encontrado.')
+        }
+    }, function(error) {
+        console.error('Erro ao ler os dados:', error)
+    })
+}
+
 */
