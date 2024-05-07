@@ -92,12 +92,7 @@ async function gerarFrase(idTextoGrande, idTextoPequeno){
         textoGrande.innerHTML = pergunta
         textoPequeno.innerText = respostaCerta
         const caixaPequena = document.getElementById('idCaixaPequena')
-        caixaPequena.classList.add(respostaCerta);
-
-        
-
-
-
+        caixaPequena.classList.add(respostaCerta)
     })
     .catch(error => {
         console.error('Erro ao obter pergunta:', error);

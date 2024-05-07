@@ -30,8 +30,7 @@
 }
 
 .caixaGrande {
-  width: 60vw;
-  height: 20vh;
+  width: 70vw;
   position: relative;
   background-color: #f0f0f0;
   border-radius: 10px;
@@ -41,7 +40,7 @@
 
 .textoGrande {
   color: black;
-  font-size: 32px;
+  font-size: 1.5rem;
 }
 
 .accept-button, .reject-button {
@@ -80,8 +79,8 @@
 }
 
 .caixaPequena {
-  width: 10vw;
-  height: 8vh;
+  width: 170px;
+  height: 70px;
   position: relative;
   background-color: #f0f0f0;
   border-radius: 10px;
@@ -95,7 +94,7 @@
 
 .textoPequeno {
   color: #f0f0f0;
-  font-size: 35px;
+  font-size: 200%;
 }
 
 .centralizar {
@@ -110,4 +109,10 @@
 
 .False:hover {
   background-color: red;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
