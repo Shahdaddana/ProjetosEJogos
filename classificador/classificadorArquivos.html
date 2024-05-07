@@ -6,6 +6,7 @@
       <title>Classificador de Comentários</title>
       <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
       <link rel="stylesheet" href="classificador.css">
+      <link rel="stylesheet" href="botaoToogle.css">
    </head>
    <body>
       <!-- Navbar -->
@@ -13,30 +14,30 @@
 
       <!-- Conteúdo da página -->
       <div class="container"> 
-         <div class="box">
-            <p class="boxText" id="caixaDeTexto"></p>
-            <button class="accept-button">Aceitar</button>
-            <button class="reject-button">Rejeitar</button>
-        </div>
+         <div class="caixaGrande">
+            <p class="textoGrande" id="idTextoGrande"></p>
+            <!-- <button class="accept-button">Aceitar</button> <button class="reject-button">Rejeitar</button> -->
+         </div>
+         <div style="margin-top: 3vh;"></div>
+         <div class="centralizar">
+            <div class="caixaPequena" id="idCaixaPequena">
+               <div style="margin-top: 1.5vh;">
+                  <p class="textoPequeno " id="idTextoPequeno"></p>
+               </div>
+            </div>
+         </div>
       </div>
 
       <!-- Scripts Bootstrap (jQuery, Popper.js, Bootstrap JS) -->
       <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
       <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
       <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-      <!-- Google API -->
-      <!-- <script type="module" src="https://cdn.jsdelivr.net/npm/googleapis@136.0.0/build/src/index.min.js"></script> -->
-      <!-- <script type="module" src="https://cdn.jsdelivr.net/npm/google-auth-library@9.9.0/build/src/index.min.js"></script> -->
-      <!-- <script type="module" src="https://cdn.jsdelivr.net/npm/google-spreadsheet@4.1.1/+esm"></script> -->
-
-
-      
-      <script src="https://apis.google.com/js/api.js"></script>
+      <!-- Tradutor -->
+      <script type="module" src="https://cdn.jsdelivr.net/npm/translate/index.min.js"></script>
       <script src="classificador.js"></script>
       <script>
          carregarElemento('navbar.html','navbar-container')
-         lerFrases('caixaDeTexto')
-         console.log("oi")
-       </script>
+         gerarFrase('idTextoGrande', 'idTextoPequeno')
+      </script>
    </body>
 </html>

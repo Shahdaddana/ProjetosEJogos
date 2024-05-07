@@ -1,3 +1,8 @@
+/*
+<button class="accept-button">Aceitar</button>
+<button class="reject-button">Rejeitar</button>
+*/
+
 .navbar-brand {
     font-size: 24px;
     font-weight: bold;
@@ -24,17 +29,17 @@
   background-color: #ffffff;
 }
 
-.box {
+.caixaGrande {
   width: 60vw;
-  height: 45vh;
+  height: 20vh;
   position: relative;
   background-color: #f0f0f0;
   border-radius: 10px;
   padding: 20px;
-  box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
+  box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.2);
 }
 
-.boxText {
+.textoGrande {
   color: black;
   font-size: 32px;
 }
@@ -72,4 +77,37 @@
 .botaoNavbar:hover {
   opacity: 0.6;
   font-size: 26px;
+}
+
+.caixaPequena {
+  width: 10vw;
+  height: 8vh;
+  position: relative;
+  background-color: #f0f0f0;
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.2);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: background-color 0.3s ease;
+}
+
+.textoPequeno {
+  color: #f0f0f0;
+  font-size: 35px;
+}
+
+.centralizar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.True:hover {
+  background-color: green;
+}
+
+.False:hover {
+  background-color: red;
 }
