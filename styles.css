@@ -102,3 +102,20 @@
     background-color: #ff4d0073;
 }
 
+#botaoReiniciar {
+    background-color: #f0f0f0;
+    border: none;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.2);
+    transition: background-color 0.3s ease;
+    font-size: 48px;
+    height: 70px;
+    line-height: 0.7;
+    margin-left: -86px;
+    margin-right: 10px;
+}
+
+#botaoReiniciar:hover {
+    background-color: orange;
+}

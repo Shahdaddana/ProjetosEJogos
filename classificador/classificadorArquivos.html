@@ -6,7 +6,6 @@
       <title>Classificador de Comentários</title>
       <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
       <link rel="stylesheet" href="classificador.css">
-      <link rel="stylesheet" href="botaoToogle.css">
    </head>
    <body>
       <!-- Navbar -->
@@ -18,26 +17,17 @@
             <p class="textoGrande" id="idTextoGrande"></p>
             <!-- <button class="accept-button">Aceitar</button> <button class="reject-button">Rejeitar</button> -->
          </div>
-         <div style="margin-top: 3vh;"></div>
-         <div class="centralizar">
-            <div class="caixaPequena" id="idCaixaPequena">
-               <div style="margin-top: 1.5vh;">
-                  <p class="textoPequeno " id="idTextoPequeno"></p>
-               </div>
-            </div>
-         </div>
+         
       </div>
 
       <!-- Scripts Bootstrap (jQuery, Popper.js, Bootstrap JS) -->
       <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
       <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
       <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-      <!-- Tradutor -->
-      <script type="module" src="https://cdn.jsdelivr.net/npm/translate/index.min.js"></script>
-      <script src="classificador.js"></script>
+      <script src="classificadorArquivos.js"></script>
       <script>
          carregarElemento('navbar.html','navbar-container')
-         gerarFrase('idTextoGrande', 'idTextoPequeno')
+         //lerPanilha('idTextoGrande', 'idTextoPequeno')
       </script>
    </body>
 </html>
