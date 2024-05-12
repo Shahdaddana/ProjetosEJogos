@@ -15,10 +15,13 @@
       <div class="container"> 
          <div class="caixaGrande" id='idCaixaGrande'>
             <p class="textoGrande" id="idTextoGrande"></p>
-            <!-- <button class="accept-button">Aceitar</button> <button class="reject-button">Rejeitar</button> -->
+            <button class="accept-button" id="botaoAceitar">Aceitar</button>
+            <button class="reject-button" id="botaoRejeitar">Rejeitar</button>
          </div>
          
+         
       </div>
+      
 
       <!-- Scripts Bootstrap (jQuery, Popper.js, Bootstrap JS) -->
       <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -27,7 +30,25 @@
       <script src="classificadorArquivos.js"></script>
       <script>
          carregarElemento('navbar.html','navbar-container')
-         //lerPanilha('idTextoGrande', 'idTextoPequeno')
+         let idAtual, textoAtual, aprovadoAtual
+
+   
+         async function pegarConteudo(){
+            const { id, texto, aprovado } = await planilhaGet()
+            idAtual = id
+            textoAtual = texto
+            aprovadoAtual = aprovado
+
+            const textoGrande = document.getElementById('idTextoGrande')
+            textoGrande.innerText = textoAtual+id
+            
+            
+            eventoBotao('botaoAceitar', idAtual)
+            eventoBotao('botaoRejeitar', idAtual)
+         }
+         //pegarConteudo()
+         
+         
       </script>
    </body>
 </html>

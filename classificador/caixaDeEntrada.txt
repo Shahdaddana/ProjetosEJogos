@@ -1,4 +1,0 @@
-Esta é a primeira frase;
-Aqui vai outra frase;
-Uma terceira frase para exibir;
-Mais uma frase interessante;

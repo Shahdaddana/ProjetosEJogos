@@ -117,3 +117,30 @@
   flex-direction: column;
   align-items: center;
 }
+
+.custom-card {
+  border: none;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.card-header {
+  border-bottom: none;
+  border-radius: 0.25rem 0.25rem 0 0;
+}
+
+.card {
+  padding: 1rem;
+  border: 1px solid #dee2e6;
+  border-radius: 0.25rem;
+  margin-bottom: 1rem;
+}
+
+.card.aprovado {
+  background-color: #28a745; /* Verde */
+  color: #fff; /* Texto branco */
+}
+
+.card.rejeitado {
+  background-color: #dc3545; /* Vermelho */
+  color: #fff; /* Texto branco */
+}
