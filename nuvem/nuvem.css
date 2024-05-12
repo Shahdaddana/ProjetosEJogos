@@ -1,0 +1,60 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f2f2f2;
+    
+}
+
+.container {
+    max-width: calc(15% + 250px); /* Largura máxima com 30% da largura da tela mais 200px */
+    margin: 0 auto; /* Centralizar horizontalmente */
+    background-color: #fff;
+    padding-top: 2px;
+    padding-left: 20px;
+    padding-bottom: 50px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.3);
+    position: relative;
+}
+
+.areaTexto {
+    width: calc(100% - 20px);
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+.botaoEnviar,
+.botaoDownload {
+    background-color: orange;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    font-size: medium;
+}
+
+.botaoEnviar:hover,
+.botaoDownload:hover {
+    background-color: darkorange;
+}
+
+.botaoEnviar {
+    float: right; /* Alinhando o botão de enviar à direita */
+    margin-bottom: 10px;
+    margin-right: 20px;
+}
+
+.botaoDownload {
+    float: right; /* Alinhando o botão de download à direita */
+}
+
+.imagemNuvem {
+    display: block;
+    max-width: 100%; /* Largura máxima igual à largura do contêiner */
+    height: auto; /* Garantir proporções corretas da imagem */
+    margin: 20px auto; /* Centralizar horizontalmente */
+}
