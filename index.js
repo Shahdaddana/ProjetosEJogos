@@ -22,9 +22,9 @@ function criarCard(titulo, descricao, imagem, href) {
     return cardHtml;
 }
 
-function adicionarCards() {
-    const linhaCards = document.getElementById('linhaCards')
-
+function adicionarCards(elementoMae) {
+    const linhaCards = document.getElementById(elementoMae)
+    
     // Nuvem
     linhaCards.innerHTML += criarCard(
         "Nuvem de Palavras",
@@ -37,21 +37,21 @@ function adicionarCards() {
         "Gerador de Trivia",
         "Gera perguntas aleatórias sobre trivialidades",
         "images/geradorTrivia.jpeg",
-        "geradorDeTrivia.html")
+        "trivia/geradorDeTrivia.html")
 
     // QR
     linhaCards.innerHTML += criarCard(
         "Leitor de Código QR",
         "Apresenta o valor do código QR, inclusive se for um WIFI",
         "images/codigoQR.jpeg",
-        "leitorQr.html")
+        "leitorQr/leitorQr.html")
 
     // Ponteiros
     linhaCards.innerHTML += criarCard(
         "Jogo dos Ponteiros",
         "Jogo desenvolvido para experimentação de conceitos em IA",
         "images/ponteiroIcone.png",
-        "jogoDosPonteiros.html")
+        "jogoPonteiros/jogoDosPonteiros.html")
 
     /*
     // Envoltória

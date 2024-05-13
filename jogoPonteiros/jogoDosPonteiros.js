@@ -1,3 +1,5 @@
+const PONTEIRO_COLORIDO = 'url("../images/ponteiroColorido.png")'
+const PONTEIRO_CINZA = 'url("../images/ponteiroCinza.png")'
 const TAMANHO_PONTEIRO = 200
 const ROTACOES = [0, 90, 180, 270]
 const TAMANHO_LADO = 2
@@ -48,11 +50,11 @@ function desenharOverlay(objetoOverlay, incluirEventos) {
             // Caso o ponteiro aponte para o Norte, a imagem carregada será em cinza,
             // e ele não poderá girar mais
             if (randomRotation === 0) {
-                ponteiro.style.backgroundImage = 'url("images/ponteiroCinza.png")'
+                ponteiro.style.backgroundImage = PONTEIRO_CINZA
                 pontuacao--
             } else {
                 // Caso contrário, será carregada a imagem colorida
-                ponteiro.style.backgroundImage = 'url("images/ponteiroColorido.png")'
+                ponteiro.style.backgroundImage = PONTEIRO_COLORIDO
                 ponteiro.style.transform = `rotate(${randomRotation}deg)`
 
                 if (incluirEventos){
@@ -76,7 +78,7 @@ function clicarPonteiro(event) {
     // Se a rotação atingir 0 graus, remove o evento de clique e troca a imagem
     if ((rotation === 0) || (rotation === 360)){
         ponteiro.removeEventListener('mousedown', clicarPonteiro)
-        ponteiro.style.backgroundImage = 'url("images/ponteiroCinza.png")';
+        ponteiro.style.backgroundImage = PONTEIRO_CINZA
     }
     
     ponteiro.style.transform = `rotate(${rotation}deg)`
@@ -89,10 +91,10 @@ function atualizarPonteiroVisual(ponteiroId, direcao, idOverlay) {
     // Atualiza a imagem e a rotação do ponteiro com base na direção
     ponteiro.style.transform = 'rotate('+direcao+'deg)'
     if (direcao === 0){
-        ponteiro.style.backgroundImage = 'url("images/ponteiroCinza.png")'
+        ponteiro.style.backgroundImage = PONTEIRO_CINZA
     }
     if (direcao === (90 || 180 || 270)){
-        ponteiro.style.backgroundImage = 'url("images/ponteiroColorido.png")'
+        ponteiro.style.backgroundImage = PONTEIRO_COLORIDO
     }
     
 }
