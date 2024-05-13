@@ -5,15 +5,12 @@
 	<title>Jogos e Projetos</title>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<meta name="description" content="Free HTML5 Website Template by FreeHTML5.co" />
 	<link rel="stylesheet" href="styles.css">
 	<link href='https://fonts.googleapis.com/css?family=Raleway:400,300,600,400italic,700' rel='stylesheet' type='text/css'>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 	<!---------------------------------------------->
 	
-	
 	<!------------------- ESTILOS ------------------>
-	<!-- Envoltória Convexa -->
-	<script src="envoltoriaConvexa.js"></script>
 	<!-- Animate.css -->
 	<link rel="stylesheet" href="css/animate.css">
 	<!-- Icomoon Icon Fonts-->
@@ -40,96 +37,9 @@
 			<p>Abaixo em destaque algumas provas de conceito, jogos e experimentação de código</p>
 		</div>
 		<div class="gtco-container"> 
-			<div class="row">
-				<!-- Nuvem de Palavras --> 
-				<div class="col-md-4 col-sm-4">
-					<div class="feature-center animate-box" data-animate-effect="fadeIn">
-						<span class="icon">
-							<img class="iconeRedondo" src="images/nuvem.png" alt="Ícone de uma prancheta">
-						</span>
-						<h3>Nuvem de Palavras</h3>
-						<p>Cria uma nuvem de palavras a partir de um texto</p>
-						<p><a href="nuvem/nuvem.html" class="btn btn-primary btn-outline">Acessar</a></p>
-					</div>
-				</div>
-				<!-- Gerador de Trivia --> 
-				<div class="col-md-4 col-sm-4">
-					<div class="feature-center animate-box" data-animate-effect="fadeIn">
-						<span class="icon">
-							<img class="iconeRedondo" src="images/geradorTrivia.jpeg" alt="Ícone de um comentário">
-						</span>
-						<h3>Gerador de Trivia</h3>
-						<p>Gera perguntas aleatórias sobre trivialidades</p>
-						<p><a href="geradorDeTrivia.html" class="btn btn-primary btn-outline">Acessar</a></p>
-					</div>
-				</div>
-				<!-- Código QR --> 
-				<div class="col-md-4 col-sm-4">
-					<div class="feature-center animate-box" data-animate-effect="fadeIn">
-						<span class="icon">
-							<img class="iconeRedondo" src="images/codigoQR.jpeg" alt="Ícone de um código QR">
-						</span>
-						<h3>Leitor de Código QR</h3>
-						<p>Apresenta o valor do código QR, inclusive se for um WIFI</p>
-						<p><a href="leitorQr.html" class="btn btn-primary btn-outline">Acessar</a></p>
-					</div>
-				</div>
-				<!-- Jogo dos Ponteiros --> 
-				<div class="col-md-4 col-sm-4">
-					<div class="feature-center animate-box" data-animate-effect="fadeIn">
-						<span class="icon">
-							<img class="iconeRedondo" src="images/ponteiroIcone.png" alt="Ícone de um ponteiro">
-						</span>
-						<h3>Jogo dos Ponteiros</h3>
-						<p>Jogo desenvolvido para experimentação de conceitos em IA</p>
-						<p><a href="jogoDosPonteiros.html" class="btn btn-primary btn-outline">Acessar</a></p>
-					</div>
-				</div>
-				<!-- Envoltória Convexa --> 
-				<div class="col-md-4 col-sm-4">
-					<div class="feature-center animate-box" data-animate-effect="fadeIn">
-						<span class="icon">
-							<img class="iconeRedondo" src="images/envoltoria.png" alt="Ícone de uma Envoltória Convexa">
-						</span>
-						<h3>Envoltória Convexa</h3>
-						<p>Alguns métodos para se calcular uma envoltória convexa</p>
-						<p><a href="envoltoriaConvexa.html" class="btn btn-primary btn-outline" >Acessar</a></p>
-					</div>
-				</div>
-				<!-- Jogos --> 
-				<div class="col-md-4 col-sm-4">
-					<div class="feature-center animate-box" data-animate-effect="fadeIn">
-						<span class="icon">
-							<img class="iconeRedondo" src="images/joystick.jpeg" alt="Ícone de um Joystick">
-						</span>
-						<h3>Jogos</h3>
-						<p>Jogos simples para implementar algoritmos complexos</p>
-						<p><a href="#" class="btn btn-primary btn-outline">Acessar</a></p>
-					</div>
-				</div>
-				<!-- Projetos --> 
-				<div class="col-md-4 col-sm-4">
-					<div class="feature-center animate-box" data-animate-effect="fadeIn">
-						<span class="icon">
-							<img class="iconeRedondo" src="images/prancheta.png" alt="Ícone de uma prancheta">
-						</span>
-						<h3>Projetos</h3>
-						<p>Coletânea de mini projetos feitos para experimentação e provas de conceito</p>
-						<p><a href="#" class="btn btn-primary btn-outline">Acessar</a></p>
-					</div>
-				</div>
-				<!-- Classificador de Comentários --> 
-				<div class="col-md-4 col-sm-4">
-					<div class="feature-center animate-box" data-animate-effect="fadeIn">
-						<span class="icon">
-							<img class="iconeRedondo" src="images/classificador.jpeg" alt="Ícone de uma prancheta">
-						</span>
-						<h3>Classificador de Comentários</h3>
-						<p>Categoriza comentários de redes sociais, avalia nível de toxicidade</p>
-						<p><a href="classificador/classificadorArquivos.html" class="btn btn-primary btn-outline">Acessar</a></p>
-					</div>
-				</div>
-
+			<div id="linhaCards" class="row">
+				
+				<!-- Inserção Dinâmica dos Cards -->
 			</div>
 		</div>
 	</div> 
@@ -159,24 +69,14 @@
 	<script src="js/main.js"></script>
 	<!-- BLIP -->
 	<script src="https://unpkg.com/blip-chat-widget" type="text/javascript"></script>
+	<script src="index.js"></script>
     <script>
-        (function () {
-            window.onload = function () {
-                new BlipChat()
-                    .withAppKey('ZnVuY29lc2Vqb2dvczo5ZjgyNDA2OS1lZDNkLTQwZmMtYTZkNi0yMzkxNjY0ZjQzYTE=')
-                    .withButton({"color":"#0096fa","icon":""})
-                    .withCustomCommonUrl('https://shahdad-dana-m34ud.chat.blip.ai/')
-                    .build();
-            }
-        })()
+        adicionarCards()
+		window.onload = botaoBLIP
     </script>
 	<!---------------------------------------------->
 
-	<script>
-		function irParaEnvoltoriaConvexa() {
-			window.location.href = "envoltoriaConvexa.html";
-		}
-	</script>
+	
 </body>
 </html>
 	
