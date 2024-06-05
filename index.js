@@ -53,6 +53,13 @@ function adicionarCards(elementoMae) {
         "images/ponteiroIcone.png",
         "jogoPonteiros/jogoDosPonteiros.html")
 
+    // Combinador CSV
+    linhaCards.innerHTML += criarCard(
+        "Combinador CSV",
+        "Receber arquivos CSV e retorna a união das tabelas",
+        "images/combinador.jpeg",
+        "combinador/combinador.html")
+
     /*
     // Envoltória
     linhaCards.innerHTML += criarCard(
