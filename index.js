@@ -60,6 +60,13 @@ function adicionarCards(elementoMae) {
         "images/combinador.jpeg",
         "combinador/combinador.html")
 
+    // NASA
+    linhaCards.innerHTML += criarCard(
+        "Imagens da NASA",
+        "Recebe uma imagem aleatoria de alguma missao da NASA",
+        "images/nasa.jpeg",
+        "nasa/nasa.html")
+
     /*
     // Envoltória
     linhaCards.innerHTML += criarCard(
