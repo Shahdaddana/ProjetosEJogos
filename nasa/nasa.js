@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', function () {
-    fetch('https://api.nasa.gov/planetary/apod?api_key=lgsysRPuUscMe368QJwgZPYBORyawghXQEOQiALx')
+    fetch('https://api.nasa.gov/planetary/apod?api_key=X')
         .then(response => response.json())
         .then(data => {
             document.getElementById('title').textContent = data.title;
