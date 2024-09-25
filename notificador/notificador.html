@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enviar Notificação</title>
+    <link rel="stylesheet" href="notificador.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Enviar Notificação</h1>
+        <form id="notificationForm">
+            <label for="topic">Tópico:</label>
+            <input type="text" id="topic" name="topic" required>
+            <label for="message">Mensagem:</label>
+            <textarea id="message" name="message" rows="4" required></textarea>
+            <button type="submit">Enviar</button>
+        </form>
+        
+        <p id="response"></p>
+    </div>
+    <script src="notificador.js"></script>
+</body>
+</html>

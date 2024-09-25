@@ -25,6 +25,13 @@ function criarCard(titulo, descricao, imagem, href) {
 function adicionarCards(elementoMae) {
     const linhaCards = document.getElementById(elementoMae)
     
+    // Notificador
+    linhaCards.innerHTML += criarCard(
+        "Notificador",
+        "Envia uma mensagem de notificacao para o celular. Utiliza a API Ntfy.sh",
+        "images/notificador.png",
+        "notificador/notificador.html")
+
     // Nuvem
     linhaCards.innerHTML += criarCard(
         "Nuvem de Palavras",

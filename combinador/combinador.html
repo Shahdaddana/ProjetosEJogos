@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Unir Arquivos CSV</title>
+  <link rel="stylesheet" href="combinador.css">
+</head>
+<body>
+  <h1>Combinador de Arquivos CSV</h1>
+  <div class="container">
+    <div class="card" id="card1">
+      <h2>Tabela 1</h2>
+      <label for="entradaArquivo1" class="custom-file-upload">Selecionar Arquivo</label>
+      <input type="file" id="entradaArquivo1" accept=".csv">
+      <p class="file-name" id="file-name-1"></p>
+    </div>
+    <div class="card" id="card2">
+      <h2>Tabela 2</h2>
+      <label for="entradaArquivo2" class="custom-file-upload">Selecionar Arquivo</label>
+      <input type="file" id="entradaArquivo2" accept=".csv">
+      <p class="file-name" id="file-name-2"></p>
+    </div>
+  </div>
+  <script src="combinador.js"></script>
+</body>
+</html>
