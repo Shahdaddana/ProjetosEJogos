@@ -53,6 +53,13 @@ function adicionarCards(elementoMae) {
         "images/ponteiroIcone.png",
         "jogoPonteiros/jogoDosPonteiros.html")
 
+    // Contador
+    linhaCards.innerHTML += criarCard(
+        "Contador Estatístico",
+        "Ferramenta para auxiliar pesquisas de estatística",
+        "images/contador.jpeg",
+        "contadorDePesquisa/index.html")
+
     /*
     // Envoltória
     linhaCards.innerHTML += criarCard(
