@@ -25,6 +25,13 @@ function criarCard(titulo, descricao, imagem, href) {
 function adicionarCards(elementoMae) {
     const linhaCards = document.getElementById(elementoMae)
     
+    // Portfolio de Receitas
+    linhaCards.innerHTML += criarCard(
+        "Portfolio de Receitas",
+        "Catálogo de pratos culinários favoritos, com categorias",
+        "images/portfolioReceitas.jpeg",
+        "portfolioReceitas/index.html")
+
     // Notificador
     linhaCards.innerHTML += criarCard(
         "Notificador",

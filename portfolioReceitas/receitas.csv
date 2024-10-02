@@ -1,0 +1,21 @@
+nome,imagem,ingredientes,preparo,categoria,favorito
+Frango Xadrez,frangoXadrez.jpg,"Filé de frango, Pimentão Amarelo, Pimentão Vermelho, Pimentão Verde, 2 Dentes de Alho, Molho Shoyu, Azeite, Cebola","Refogue as verduras com azeite por 3 Min. Acrescente o frango e deixe cozinhar.",tradicional,false
+Tomate Confit,tomateConfit.jpg,"Ingredientes","Modo de preparo",tradicional,false
+Lasanha de Carne,lasanhaDeCarne.jpg,"Ingredientes","Modo de preparo",tradicional,false
+Torta de Frango,tortaFrango.jpg,"Ingredientes","Modo de preparo",tradicional,false
+Tomate Recheado,tomateRecheado.jpg,"Ingredientes","Modo de preparo",tradicional,false
+Frango Grelhado,frangoGrelhado.jpg,"Ingredientes","Modo de preparo",tradicional,false
+Feijoada,feijoada.jpg,"Ingredientes","Modo de preparo",tradicional,false
+Arroz,arroz.jpg,"Ingredientes","Modo de preparo",tradicional,false
+Carne Moída,carneMoida.jpg,"Ingredientes","Modo de preparo",tradicional,false
+Grão de Bico com Tomate,graoDeBicoTomate.jpg,"Ingredientes","Modo de preparo",tradicional,false
+Iogurte Caseiro,iogurte.jpg,"Ingredientes","Modo de preparo",doce,false
+Salada,salada.jpg,"Ingredientes","Modo de preparo",tradicional,false
+Macarrão com Carne Moída,macarraoCarneMoida.jpg,"Ingredientes","Modo de preparo",tradicional,false
+Farofa,farofa.jpg,"Ingredientes","Modo de preparo",tradicional,false
+Linguiça Assada,linguica.jpg,"Ingredientes","Modo de preparo",tradicional,false
+Pão de Alho,paoDeAlho.jpg,"Ingredientes","Modo de preparo",tradicional,false
+Gelatina,gelatina.jpg,"Ingredientes","Modo de preparo",doce,false
+Sopa de Frango com Legumes,sopaFrangoLegumes.jpg,"Ingredientes","Modo de preparo",tradicional,false
+Moqueca de Camarao,moquecaCamarao.jpg,"Ingredientes","Modo de preparo",tradicional,false
+Lasanha de Frango,lasanhaDeFrango.jpg,"Ingredientes","Modo de preparo",tradicional,false
