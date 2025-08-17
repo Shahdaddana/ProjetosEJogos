@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Gerador de Gráfico Likert</title>
+  <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 0; padding: 0; text-align: center; }
+    .container { max-width: 900px; margin: auto; padding: 30px; }
+    h2 { margin-bottom: 20px; }
+    p { margin-bottom: 10px; }
+    textarea { width: 100%; height: 200px; font-family: monospace; margin-top: 10px; }
+    button { margin: 20px 0; padding: 12px 25px; font-size: 16px; cursor: pointer; border-radius: 8px; border: none; background: #4CAF50; color: white; }
+    button:hover { background: #45a049; }
+    #chart { width: 100%; max-width: 1000px; height: 700px; margin: auto; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>Gerador de Gráfico de Escala Likert</h2>
+    <p>Digite ou cole os dados (cada linha = uma questão, colunas separadas por vírgula no formato: <br>
+       <b>Discordo totalmente, Discordo, Neutro, Concordo, Concordo totalmente</b>):</p>
+    
+    <textarea id="inputData">1,0,2,3,3
+0,0,0,2,7
+0,1,1,3,4
+2,1,1,4,1</textarea>
+    <br>
+    <button onclick="gerarGrafico()">Gerar Gráfico</button>
+  </div>
+
+  <div id="chart"></div>
+
+  <script>
+    function gerarGrafico() {
+      const raw = document.getElementById("inputData").value.trim();
+      const rows = raw.split("\n").map(r => r.split(",").map(Number));
+      const labels = rows.map((_, i) => "Q" + (i+1));
+
+      // Normalizar para porcentagem (cada linha = 100%)
+      const percRows = rows.map(row => {
+        const total = row.reduce((a,b) => a+b, 0);
+        return row.map(v => total > 0 ? (v/total*100) : 0);
+      });
+
+      // Quebras por categoria (%)
+      const dt = percRows.map(r => -r[0]);
+      const d  = percRows.map(r => -r[1]);
+      const n  = percRows.map(r =>  r[2]);
+      const c  = percRows.map(r =>  r[3]);
+      const ct = percRows.map(r =>  r[4]);
+
+      function makeTrace(x, name, color) {
+        return {
+          x, y: labels,
+          type: 'bar', orientation: 'h',
+          name, marker: { color },
+          text: x.map(v => Math.abs(v).toFixed(0) + "%"),
+          textposition: 'inside'
+        };
+      }
+
+      const traces = [
+        makeTrace(dt, 'Discordo totalmente', '#e63636'),
+        makeTrace(d,  'Discordo', '#e66c37'),
+        makeTrace(n,  'Neutro', '#cccccc'),
+        makeTrace(c,  'Concordo', '#8fbc8f'),
+        makeTrace(ct, 'Concordo totalmente', '#008000')
+      ];
+
+      const layout = {
+        barmode: 'relative',
+        bargap: 0.3,
+        title: 'Resultados da Escala Likert (em %)',
+        xaxis: {
+          zeroline: true,
+          zerolinewidth: 2,
+          zerolinecolor: 'black',
+          title: 'Percentual de respostas'
+        },
+        yaxis: { autorange: 'reversed' },
+        legend: { orientation: 'h', y: -0.2 }
+      };
+
+      Plotly.newPlot('chart', traces, layout);
+    }
+
+    // gera o gráfico inicial
+    gerarGrafico();
+  </script>
+</body>
+</html>

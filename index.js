@@ -25,6 +25,20 @@ function criarCard(titulo, descricao, imagem, href) {
 function adicionarCards(elementoMae) {
     const linhaCards = document.getElementById(elementoMae)
     
+    // Notificador
+    linhaCards.innerHTML += criarCard(
+        "Notificador",
+        "Envia uma mensagem de notificacao para o celular. Utiliza a API Ntfy.sh",
+        "images/notificador.png",
+        "notificador/notificador.html")
+    
+    // Gerador de análise Likert
+    linhaCards.innerHTML += criarCard(
+        "Gerador de análise Likert",
+        "Uma um gráfico de análise das resposta na escala Likert",
+        "images/geradorAnaliseLikert.png",
+        "geradorAnaliseLikert/index.html")
+
     // Portfolio de Receitas
     linhaCards.innerHTML += criarCard(
         "Portfolio de Receitas",
@@ -32,12 +46,6 @@ function adicionarCards(elementoMae) {
         "images/portfolioReceitas.jpeg",
         "portfolioReceitas/index.html")
 
-    // Notificador
-    linhaCards.innerHTML += criarCard(
-        "Notificador",
-        "Envia uma mensagem de notificacao para o celular. Utiliza a API Ntfy.sh",
-        "images/notificador.png",
-        "notificador/notificador.html")
 
     // Nuvem
     linhaCards.innerHTML += criarCard(
