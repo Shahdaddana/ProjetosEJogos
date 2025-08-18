@@ -33,6 +33,22 @@
   <div id="chart"></div>
 
   <script>
+    function calcularMediana(freqs) {
+      const expanded = [];
+      freqs.forEach((count, i) => {
+        for (let j = 0; j < count; j++) expanded.push(i+1);
+      });
+      expanded.sort((a,b) => a-b);
+
+      if (expanded.length === 0) return null;
+      const mid = Math.floor(expanded.length / 2);
+      if (expanded.length % 2 === 0) {
+        return (expanded[mid - 1] + expanded[mid]) / 2;
+      } else {
+        return expanded[mid];
+      }
+    }
+
     function gerarGrafico() {
       const raw = document.getElementById("inputData").value.trim();
       const rows = raw
@@ -40,82 +56,121 @@
         .map(r => r.trim().split(/[\s,]+/).map(Number))
         .filter(r => r.length >= 5 && r.every(x => !isNaN(x)));
 
-      const labels = rows.map((_, i) => "Q" + (i + 1));
+      // --- Ordenar pelo lado direito ---
+      const rightSums = rows.map(r => r[2]/2 + r[3] + r[4]); // metade do neutro + Concordo + Concordo totalmente
+      const sortedIndices = rightSums
+        .map((sum, i) => ({ sum, i }))
+        .sort((a, b) => b.sum - a.sum)
+        .map(obj => obj.i);
 
-      // Normalizar para porcentagem (cada linha = 100%)
-      const percRows = rows.map(row => {
+      const sortedRows = sortedIndices.map(i => rows[i]);
+      const labels = sortedIndices.map(i => "Q" + (i + 1));
+
+      // Normalizar para porcentagem
+      const percRows = sortedRows.map(row => {
         const total = row.reduce((a, b) => a + b, 0);
         return row.map(v => (total > 0 ? (v / total * 100) : 0));
       });
 
-      // Categorias em %
-      const dt = percRows.map(r => -r[0]); // Discordo totalmente (negativo)
-      const d  = percRows.map(r => -r[1]); // Discordo (negativo)
-      const n  = percRows.map(r =>  r[2]); // Neutro
-      const c  = percRows.map(r =>  r[3]); // Concordo
-      const ct = percRows.map(r =>  r[4]); // Concordo totalmente
+      const traces = [];
+      const cores = ["#e63636","#e66c37","#cccccc","#8fbc8f","#008000"];
+      const nomes = ["Discordo totalmente","Discordo","Neutro","Concordo","Concordo totalmente"];
 
-      // Traços reais (apenas para o gráfico) — sem aparecer na legenda
-      function makeBarTrace(x, name, color) {
-        return {
-          x, y: labels, type: 'bar', orientation: 'h',
-          name, marker: { color },
-          text: x.map(v => Math.abs(v).toFixed(0) + "%"),
-          textposition: 'inside',
-          showlegend: false
-        };
-      }
+      percRows.forEach((row, i) => {
+        let [dt, d, n, c, ct] = row;
 
-      // Ordem para empilhar corretamente:
-      // Negativos: Discordo (perto do neutro), depois Discordo totalmente (mais à esquerda)
-      // Positivos: Concordo (perto do neutro), depois Concordo totalmente (mais à direita)
-      const barTraces = [
-        makeBarTrace(d,  'Discordo', '#e66c37'),
-        makeBarTrace(dt, 'Discordo totalmente', '#e63636'),
-        makeBarTrace(n,  'Neutro', '#cccccc'),
-        makeBarTrace(c,  'Concordo', '#8fbc8f'),
-        makeBarTrace(ct, 'Concordo totalmente', '#008000')
-      ];
+        // --- calcular base para centralizar no Neutro ---
+        const baseN = -n/2;
+        const baseD = baseN - d;
+        const baseDT = baseD - dt;
+        const baseC = n/2;
+        const baseCT = baseC + c;
 
-      // Traços "fantasma" só para a legenda (na ordem lógica desejada)
-      function legendOnly(name, color) {
-        return {
-          x: [null], y: [null],
-          type: 'scatter', mode: 'lines',
-          name,
-          line: { color, width: 12 },
-          hoverinfo: 'skip',
-          visible: 'true'
-        };
-      }
+        // Discordo totalmente
+        traces.push({
+          x: [dt], y: [labels[i]],
+          base: baseDT,
+          type: "bar", orientation: "h",
+          marker: { color: cores[0] },
+          name: nomes[0],
+          text: [dt.toFixed(0) + "%"], textposition: "inside", insidetextanchor: "middle",
+          showlegend: i === 0
+        });
 
-      const legendTraces = [
-        legendOnly('Discordo totalmente', '#e63636'),
-        legendOnly('Discordo', '#e66c37'),
-        legendOnly('Neutro', '#cccccc'),
-        legendOnly('Concordo', '#8fbc8f'),
-        legendOnly('Concordo totalmente', '#008000')
-      ];
+        // Discordo
+        traces.push({
+          x: [d], y: [labels[i]],
+          base: baseD,
+          type: "bar", orientation: "h",
+          marker: { color: cores[1] },
+          name: nomes[1],
+          text: [d.toFixed(0) + "%"], textposition: "inside", insidetextanchor: "middle",
+          showlegend: i === 0
+        });
+
+        // Neutro
+        traces.push({
+          x: [n], y: [labels[i]],
+          base: baseN,
+          type: "bar", orientation: "h",
+          marker: { color: cores[2] },
+          name: nomes[2],
+          text: [n.toFixed(0) + "%"], textposition: "inside", insidetextanchor: "middle",
+          showlegend: i === 0
+        });
+
+        // Concordo
+        traces.push({
+          x: [c], y: [labels[i]],
+          base: baseC,
+          type: "bar", orientation: "h",
+          marker: { color: cores[3] },
+          name: nomes[3],
+          text: [c.toFixed(0) + "%"], textposition: "inside", insidetextanchor: "middle",
+          showlegend: i === 0
+        });
+
+        // Concordo totalmente
+        traces.push({
+          x: [ct], y: [labels[i]],
+          base: baseCT,
+          type: "bar", orientation: "h",
+          marker: { color: cores[4] },
+          name: nomes[4],
+          text: [ct.toFixed(0) + "%"], textposition: "inside", insidetextanchor: "middle",
+          showlegend: i === 0
+        });
+      });
+
+      const medianas = sortedRows.map(calcularMediana);
 
       const layout = {
-        barmode: 'relative',
-        bargap: 0.3,
-        title: 'Resultados da Escala Likert (em %)',
+        barmode: "stack",
+        title: "Resultados da Escala Likert (em %)",
         xaxis: {
           zeroline: true,
           zerolinewidth: 2,
-          zerolinecolor: 'black',
-          title: 'Percentual de respostas',
-          ticksuffix: '%'
+          zerolinecolor: "black",
+          title: "Percentual de respostas",
+          ticksuffix: "%"
         },
-        yaxis: { autorange: 'reversed' },
-        legend: { orientation: 'h', y: -0.2 }
+        yaxis: { autorange: "reversed" },
+        legend: { orientation: "h", y: -0.2 },
+        // annotations: medianas.map((m, i) => ({
+        //   x: 0,
+        //   y: labels[i],
+        //   text: "μ₁/₂: " + (m !== null ? m : "–"),
+        //   showarrow: false,
+        //   font: { size: 14, color: "black" },
+        //   align: "left",
+        //   xanchor: "left",
+        //   xshift: -250
+        // }))
       };
 
-      Plotly.newPlot('chart', [...barTraces, ...legendTraces], layout);
+      Plotly.newPlot("chart", traces, layout);
     }
 
-    // gráfico inicial
     gerarGrafico();
   </script>
 </body>
