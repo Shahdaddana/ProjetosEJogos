@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Conversor de Arquivos</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      background: #f4f4f4;
+    }
+    .container {
+      background: white;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      text-align: center;
+      width: 350px;
+    }
+    input[type="file"] {
+      margin: 15px 0;
+    }
+    #popup {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      background: #4CAF50;
+      color: white;
+      padding: 12px 20px;
+      border-radius: 8px;
+      box-shadow: 0px 4px 8px rgba(0,0,0,0.2);
+      display: none;
+      animation: fadeInOut 3s ease;
+    }
+    @keyframes fadeInOut {
+      0% { opacity: 0; transform: translateY(-10px); }
+      10% { opacity: 1; transform: translateY(0); }
+      90% { opacity: 1; }
+      100% { opacity: 0; transform: translateY(-10px); }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>Conversor de Arquivos</h2>
+    <p>📄 CSV → XLSX</p>
+    <p>🖼️ JPEG ⇄ PNG</p>
+    <p>Escolha um arquivo e ele será convertido automaticamente.</p>
+    <input type="file" id="fileInput" accept=".csv,.jpeg,.jpg,.png">
+  </div>
+
+  <div id="popup">Arquivo convertido e baixado!</div>
+
+  <script>
+    document.getElementById("fileInput").addEventListener("change", function(event) {
+      const file = event.target.files[0];
+      if (!file) return;
+
+      const fileType = file.type;
+
+      if (fileType === "text/csv") {
+        converterCSV(file);
+      } else if (fileType === "image/jpeg" || fileType === "image/png") {
+        converterImagem(file);
+      } else {
+        alert("Formato não suportado. Use CSV, JPEG ou PNG.");
+      }
+    });
+
+    function converterCSV(file) {
+      const reader = new FileReader();
+      reader.onload = function(e) {
+        const data = e.target.result;
+        const linhas = data.split("\n").map(l => l.split(","));
+        const ws = XLSX.utils.aoa_to_sheet(linhas);
+        const wb = XLSX.utils.book_new();
+        XLSX.utils.book_append_sheet(wb, ws, "Planilha");
+        XLSX.writeFile(wb, file.name.replace(/\.csv$/, ".xlsx"));
+        mostrarPopup("Arquivo convertido para XLSX!");
+      };
+      reader.readAsText(file);
+    }
+
+    function converterImagem(file) {
+      const img = new Image();
+      const reader = new FileReader();
+
+      reader.onload = function(e) {
+        img.src = e.target.result;
+      };
+
+      img.onload = function() {
+        const canvas = document.createElement('canvas');
+        canvas.width = img.width;
+        canvas.height = img.height;
+        const ctx = canvas.getContext('2d');
+        ctx.drawImage(img, 0, 0);
+
+        let novoFormato, nomeArquivo;
+        if (file.type === "image/jpeg") {
+          novoFormato = "image/png";
+          nomeArquivo = file.name.replace(/\.[^/.]+$/, "") + ".png";
+        } else {
+          novoFormato = "image/jpeg";
+          nomeArquivo = file.name.replace(/\.[^/.]+$/, "") + ".jpeg";
+        }
+
+        canvas.toBlob(function(blob) {
+          const link = document.createElement('a');
+          link.href = URL.createObjectURL(blob);
+          link.download = nomeArquivo;
+          document.body.appendChild(link);
+          link.click();
+          document.body.removeChild(link);
+          mostrarPopup("Imagem convertida e baixada como " + nomeArquivo + "!");
+        }, novoFormato);
+      };
+
+      reader.readAsDataURL(file);
+    }
+
+    function mostrarPopup(mensagem) {
+      const popup = document.getElementById("popup");
+      popup.textContent = mensagem;
+      popup.style.display = "block";
+      setTimeout(() => { popup.style.display = "none"; }, 3000);
+    }
+  </script>
+</body>
+</html>
