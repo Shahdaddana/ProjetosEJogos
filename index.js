@@ -25,6 +25,13 @@ function criarCard(titulo, descricao, imagem, href) {
 function adicionarCards(elementoMae) {
     const linhaCards = document.getElementById(elementoMae)
     
+    // Envoltória
+    linhaCards.innerHTML += criarCard(
+        "Envoltória Convexa",
+        "Alguns métodos para se calcular uma envoltória convexa",
+        "images/envoltoria.png",
+        "envoltoria/envoltoriaConvexa.html")
+
     // Notificador
     linhaCards.innerHTML += criarCard(
         "Notificador",
@@ -103,13 +110,6 @@ function adicionarCards(elementoMae) {
     "contadorDePesquisa/index.html")
 
     /*
-    // Envoltória
-    linhaCards.innerHTML += criarCard(
-        "Envoltória Convexa",
-        "Alguns métodos para se calcular uma envoltória convexa",
-        "images/envoltoria.png",
-        "envoltoriaConvexa.html")
-
     // Classificador
     linhaCards.innerHTML += criarCard(
         "Classificador de Comentários",
