@@ -42,7 +42,7 @@ function adicionarCards(elementoMae) {
     // Gerador de análise Likert
     linhaCards.innerHTML += criarCard(
         "Gerador de análise Likert",
-        "Uma um gráfico de análise das resposta na escala Likert",
+        "Gera um gráfico de análise das resposta na escala Likert",
         "images/geradorAnaliseLikert.png",
         "geradorAnaliseLikert/index.html")
     
@@ -91,23 +91,23 @@ function adicionarCards(elementoMae) {
     // Combinador CSV
     linhaCards.innerHTML += criarCard(
         "Combinador CSV",
-        "Receber arquivos CSV e retorna a união das tabelas",
+        "Recebe arquivos CSV e retorna a união das tabelas",
         "images/combinador.jpeg",
         "combinador/combinador.html")
 
     // NASA
     linhaCards.innerHTML += criarCard(
         "Imagens da NASA",
-        "Recebe uma imagem aleatoria de alguma missao da NASA",
+        "Recebe uma imagem aleatória de alguma missao da NASA",
         "images/nasa.jpeg",
         "nasa/nasa.html")
     
     // Contador
     linhaCards.innerHTML += criarCard(
-    "Contador Estatístico",
-    "Ferramenta para auxiliar pesquisas de estatística",
-    "images/contador.jpeg",
-    "contadorDePesquisa/index.html")
+        "Contador Estatístico",
+        "Ferramenta para auxiliar pesquisas de estatística",
+        "images/contador.jpeg",
+        "contadorDePesquisa/index.html")
 
     /*
     // Classificador
