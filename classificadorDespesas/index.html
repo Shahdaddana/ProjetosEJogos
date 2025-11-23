@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Gráficos Financeiros</title>
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+      background: var(--tg-theme-bg-color);
+      color: var(--tg-theme-text-color);
+    }
+
+    h2 {
+      text-align: center;
+      margin-top: 0;
+    }
+
+    .toggle-group {
+      margin: 20px 0;
+    }
+
+    .toggle-label {
+      margin-bottom: 8px;
+      font-size: 16px;
+    }
+
+    .toggle {
+      display: flex;
+      border: 2px solid #0088cc;
+      border-radius: 10px;
+      overflow: hidden;
+    }
+
+    .toggle button {
+      flex: 1;
+      padding: 12px 0;
+      border: none;
+      background: transparent;
+      font-size: 16px;
+      cursor: pointer;
+      color: var(--tg-theme-text-color);
+    }
+
+    .toggle button.active {
+      background: #0088cc;
+      color: white;
+      font-weight: bold;
+    }
+
+    input[type="date"] {
+      width: 100%;
+      padding: 10px;
+      border-radius: 8px;
+      border: 1px solid #aaa;
+      font-size: 16px;
+      margin-bottom: 15px;
+    }
+
+    button#enviar {
+      margin-top: 20px;
+      width: 100%;
+      padding: 12px;
+      border: none;
+      border-radius: 10px;
+      font-size: 18px;
+      background: #0088cc;
+      color: white;
+      font-weight: bold;
+      cursor: pointer;
+    }
+  </style>
+</head>
+
+<body>
+
+  <h2>Gráficos Financeiros</h2>
+
+  <!-- TOGGLE TIPO -->
+  <div class="toggle-group">
+    <div class="toggle-label">Tipo</div>
+    <div class="toggle" id="toggleTipo">
+      <button data-value="pessoal" class="active">Pessoal</button>
+      <button data-value="empresa">Empresa</button>
+    </div>
+  </div>
+
+  <!-- TOGGLE MOVIMENTO -->
+  <div class="toggle-group">
+    <div class="toggle-label">Movimento</div>
+    <div class="toggle" id="toggleMovimento">
+      <button data-value="receita" class="active">Receita</button>
+      <button data-value="despesa">Despesa</button>
+    </div>
+  </div>
+
+  <!-- DATAS -->
+  <label>Data Início</label>
+  <input type="date" id="dataInicio">
+
+  <label>Data Fim</label>
+  <input type="date" id="dataFim">
+
+  <button id="enviar">Enviar</button>
+
+  <script src="https://telegram.org/js/telegram-web-app.js"></script>
+  <script>
+    const tg = window.Telegram.WebApp;
+    tg.expand();
+
+    // Função para comportamento do toggle
+    function setupToggle(id) {
+      const el = document.getElementById(id);
+      const buttons = el.querySelectorAll("button");
+
+      buttons.forEach(btn => {
+        btn.addEventListener("click", () => {
+          buttons.forEach(b => b.classList.remove("active"));
+          btn.classList.add("active");
+        });
+      });
+    }
+
+    setupToggle("toggleTipo");
+    setupToggle("toggleMovimento");
+
+    document.getElementById("enviar").addEventListener("click", () => {
+      const tipo = document.querySelector("#toggleTipo .active").dataset.value;
+      const movimento = document.querySelector("#toggleMovimento .active").dataset.value;
+
+      const payload = {
+        tipo,
+        movimento,
+        data_inicio: document.getElementById("dataInicio").value,
+        data_fim: document.getElementById("dataFim").value
+      };
+
+      tg.sendData(JSON.stringify(payload));
+      tg.close(); // fecha o mini app suavemente
+    });
+
+  </script>
+
+</body>
+</html>

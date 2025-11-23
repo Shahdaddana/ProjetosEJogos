@@ -108,6 +108,13 @@ function adicionarCards(elementoMae) {
         "Ferramenta para auxiliar pesquisas de estatística",
         "images/contador.jpeg",
         "contadorDePesquisa/index.html")
+    
+    // Classificador de Despesas
+    linhaCards.innerHTML += criarCard(
+        "Classificador Despesas",
+        "Chamada para solicitar grafico de receita ou despesa",
+        "images/classificadorDespesas.jpeg",
+        "classificadorDespesas/index.html")
 
     /*
     // Classificador
