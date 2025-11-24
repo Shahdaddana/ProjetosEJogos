@@ -109,6 +109,11 @@
     const tg = window.Telegram.WebApp;
     tg.expand();
 
+    // Garante que está rodando dentro do Telegram WebApp
+    if (!tg.initDataUnsafe) {
+      alert("Abra este app pelo Telegram!");
+    }
+
     // Função para comportamento do toggle
     function setupToggle(id) {
       const el = document.getElementById(id);
@@ -126,6 +131,7 @@
     setupToggle("toggleMovimento");
 
     document.getElementById("enviar").addEventListener("click", () => {
+
       const tipo = document.querySelector("#toggleTipo .active").dataset.value;
       const movimento = document.querySelector("#toggleMovimento .active").dataset.value;
 
@@ -136,8 +142,17 @@
         data_fim: document.getElementById("dataFim").value
       };
 
+      // Feedback visual
+      tg.MainButton.setText("Enviando...");
+      tg.MainButton.show();
+
+      // ENVIA para o bot → n8n
       tg.sendData(JSON.stringify(payload));
-      tg.close(); // fecha o mini app suavemente
+
+      tg.MainButton.setText("Enviado!");
+
+      // Fecha o WebApp após 1 segundo
+      setTimeout(() => tg.close(), 800);
     });
 
   </script>
